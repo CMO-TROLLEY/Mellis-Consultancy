@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mellis Consultancy — Luxury Hospitality & Restaurant Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D08A;
+    --gold-pale: rgba(201,168,76,0.12);
+    --dark: #0C0C0B;
+    --dark-2: #141410;
+    --dark-3: #1C1C18;
+    --dark-4: #242420;
+    --cream: #F2EDE4;
+    --cream-muted: #C8BFB0;
+    --muted: #7A7268;
+    --border: rgba(201,168,76,0.18);
+    --border-soft: rgba(242,237,228,0.08);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Raleway', 'Gill Sans', sans-serif;
+    --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .gold { color: var(--gold); }
+  .muted { color: var(--cream-muted); }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 5vw;
+    background: linear-gradient(to bottom, rgba(12,12,11,0.95), transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  nav.scrolled {
+    background: rgba(12,12,11,0.96);
+    border-bottom-color: var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    text-decoration: none;
+    transition: color var(--transition);
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width var(--transition);
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    display: inline-block;
+    padding: 0.6rem 1.6rem;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--dark) !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10rem 5vw 6rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgba(201,168,76,0.025) 0,
+        rgba(201,168,76,0.025) 1px,
+        transparent 1px,
+        transparent 120px
+      );
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 760px;
+  }
+
+  .hero-content .label { margin-bottom: 2rem; display: block; }
+
+  .hero-title {
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--cream-muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background var(--transition), transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    border: 1px solid var(--border);
+    color: var(--cream-muted);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color var(--transition), color var(--transition);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--cream);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 3rem;
+    left: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  .hero-stat-bar {
+    position: absolute;
+    right: 5vw;
+    bottom: 3rem;
+    display: flex;
+    gap: 3rem;
+  }
+
+  .hero-stat { text-align: center; }
+
+  .hero-stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-stat-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 7rem 5vw; }
+
+  .section-header {
+    margin-bottom: 4rem;
+  }
+
+  .section-header .label { margin-bottom: 1rem; display: block; }
+
+  .section-title {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-subtitle {
+    margin-top: 1.2rem;
+    font-size: 1rem;
+    color: var(--cream-muted);
+    max-width: 560px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.5rem 0;
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--dark-2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #about::before {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+  }
+
+  .about-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-photo-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(201,168,76,0.015) 0,
+        rgba(201,168,76,0.015) 1px,
+        transparent 1px,
+        transparent 28px
+      );
+  }
+
+  .photo-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .photo-icon svg { opacity: 0.4; }
+
+  .about-frame-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.6;
+  }
+
+  .corner-tl { top: -8px; left: -8px; border-width: 1px 0 0 1px; }
+  .corner-tr { top: -8px; right: -8px; border-width: 1px 1px 0 0; }
+  .corner-bl { bottom: -8px; left: -8px; border-width: 0 0 1px 1px; }
+  .corner-br { bottom: -8px; right: -8px; border-width: 0 1px 1px 0; }
+
+  .about-content {}
+
+  .about-name {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 0.3rem;
+  }
+
+  .about-title-role {
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-bio {
+    font-size: 0.98rem;
+    color: var(--cream-muted);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-item {
+    padding: 1.2rem;
+    border: 1px solid var(--border-soft);
+    border-left: 2px solid var(--gold);
+    background: rgba(201,168,76,0.03);
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-desc {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ─── CHALLENGES ─── */
+  #challenges { background: var(--dark); }
+
+  .challenges-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .challenges-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 0.5rem;
+  }
+
+  .challenge-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--border-soft);
+    transition: background var(--transition);
+    cursor: default;
+  }
+
+  .challenge-item:last-child { border-bottom: none; }
+
+  .challenge-num {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+    min-width: 28px;
+    font-weight: 400;
+  }
+
+  .challenge-text {
+    font-size: 0.95rem;
+    color: var(--cream);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .challenge-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  /* ─── SOLUTIONS ─── */
+  #solutions { background: var(--dark-2); }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+  }
+
+  .solution-card {
+    background: var(--dark-3);
+    padding: 2.4rem 2rem;
+    border: 1px solid var(--border-soft);
+    transition: background var(--transition), border-color var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .solution-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+  }
+
+  .solution-card:hover { background: var(--dark-4); border-color: var(--border); }
+  .solution-card:hover::before { transform: scaleX(1); }
+
+  .solution-icon {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .solution-icon svg { width: 20px; height: 20px; }
+
+  .solution-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .solution-desc {
+    font-size: 0.875rem;
+    color: var(--cream-muted);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ─── FRAMEWORK ─── */
+  #framework {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .framework-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .framework-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+  }
+
+  .fw-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    flex: 1;
+    min-width: 130px;
+    padding: 0 1rem;
+  }
+
+  .fw-step-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold-pale);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    transition: background var(--transition);
+  }
+
+  .fw-step:hover .fw-step-circle {
+    background: rgba(201,168,76,0.2);
+  }
+
+  .fw-connector {
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+    top: -1.5rem;
+    margin: 0;
+  }
+
+  .fw-connector::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid rgba(201,168,76,0.35);
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+
+  .fw-step-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+  }
+
+  .fw-step-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── RESULTS ─── */
+  #results { background: var(--dark-2); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .result-item {
+    padding: 2rem 1.8rem;
+    border: 1px solid var(--border-soft);
+    position: relative;
+    transition: border-color var(--transition);
+  }
+
+  .result-item:hover { border-color: var(--border); }
+
+  .result-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.2rem;
+    opacity: 0.75;
+  }
+
+  .result-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .result-desc {
+    font-size: 0.85rem;
+    color: var(--cream-muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .result-check {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ─── PACKAGES ─── */
+  #packages { background: var(--dark); }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .package-card {
+    border: 1px solid var(--border-soft);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color var(--transition), background var(--transition);
+    background: var(--dark-2);
+  }
+
+  .package-card:hover {
+    border-color: var(--border);
+    background: var(--dark-3);
+  }
+
+  .package-card.featured {
+    border-color: var(--gold);
+    background: var(--dark-3);
+  }
+
+  .package-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    white-space: nowrap;
+  }
+
+  .package-tier {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .package-name {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .package-subtitle {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+
+  .package-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-soft);
+    margin-bottom: 1.8rem;
+  }
+
+  .package-card.featured .package-divider { background: var(--border); }
+
+  .package-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .package-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    font-size: 0.875rem;
+    color: var(--cream-muted);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .feature-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 7px;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .package-card.featured .feature-dot { opacity: 1; }
+  .package-card.featured .package-features li { color: var(--cream); }
+
+  .package-cta {
+    display: block;
+    text-align: center;
+    padding: 0.85rem;
+    border: 1px solid var(--border);
+    color: var(--cream-muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all var(--transition);
+  }
+
+  .package-cta:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-pale);
+  }
+
+  .package-card.featured .package-cta {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark);
+  }
+
+  .package-card.featured .package-cta:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--dark-2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 50% 100%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info {}
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .contact-detail:first-of-type { border-top: 1px solid var(--border-soft); }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-icon svg { width: 16px; height: 16px; opacity: 0.7; }
+
+  .contact-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--dark-3);
+    border: 1px solid var(--border-soft);
+    color: var(--cream);
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color var(--transition);
+    resize: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--gold); }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--muted); font-size: 0.85rem; }
+
+  .form-group select option { background: var(--dark-3); color: var(--cream); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+  .btn-submit {
+    padding: 1rem 2.4rem;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--transition), transform 0.2s;
+    align-self: flex-start;
+  }
+
+  .btn-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid var(--border-soft);
+    padding: 3rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-nav a {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .footer-nav a:hover { color: var(--gold); }
+
+  /* ─── REVEAL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ─── MOBILE MENU ─── */
+  .nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .nav-mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--cream-muted);
+    transition: all 0.3s;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-photo-wrap { max-width: 380px; }
+    .about-photo-placeholder { aspect-ratio: 4/3; }
+    .challenges-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+    .packages-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .fw-connector { flex: 0 0 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-mobile-toggle { display: flex; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(12,12,11,0.98);
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 99;
+    }
+    .nav-links.open a { font-size: 1.5rem; font-family: var(--font-display); letter-spacing: 0.05em; }
+    .hero-stat-bar { display: none; }
+    .solutions-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .packages-grid { grid-template-columns: 1fr; max-width: 100%; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-nav { justify-content: center; flex-wrap: wrap; }
+    .fw-connector { display: none; }
+    .framework-steps { flex-direction: column; align-items: center; }
+    .fw-step { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">MELLIS<span>&nbsp;CONSULTANCY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#framework">Approach</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
+  </ul>
+  <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <span class="label">Luxury Hospitality & Restaurant Consulting · Eswatini</span>
+    <h1 class="hero-title">
+      Elevating<br>
+      <em>Service.</em><br>
+      Increasing Profit.
+    </h1>
+    <p class="hero-tagline">
+      Bringing global luxury service standards to Eswatini's hospitality industry — with over a decade of world-class, ultra-luxury experience.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book Free Assessment</a>
+      <a href="#solutions" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+  <div class="hero-stat-bar">
+    <div class="hero-stat">
+      <span class="hero-stat-num">15+</span>
+      <span class="hero-stat-label">Years Experience</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">11</span>
+      <span class="hero-stat-label">Luxury Cruise Years</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">5★</span>
+      <span class="hero-stat-label">Service Standard</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-photo-wrap reveal">
+      <div class="about-photo-placeholder">
+        <div class="photo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1" width="32" height="32">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <span>Professional Photo</span>
+      </div>
+      <div class="about-frame-corner corner-tl"></div>
+      <div class="about-frame-corner corner-tr"></div>
+      <div class="about-frame-corner corner-bl"></div>
+      <div class="about-frame-corner corner-br"></div>
+    </div>
+
+    <div class="about-content reveal reveal-delay-2">
+      <span class="label">Meet the Founder</span>
+      <div class="divider"></div>
+      <h2 class="about-name">Ellis Mnkse</h2>
+      <p class="about-title-role">Founder & Principal Consultant</p>
+      <p class="about-bio">
+        With a distinguished career spanning five-star ultra-luxury cruise lines and premier hospitality establishments, Ellis brings an unparalleled depth of service expertise to every engagement. His international leadership experience across diverse cultures and markets equips him to implement world-class systems that genuinely transform restaurant operations.
+      </p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-num">15+</div>
+          <div class="stat-desc">Years in Hospitality</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">11</div>
+          <div class="stat-desc">Years Ultra-Luxury Cruise</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">9</div>
+          <div class="stat-desc">Years Restaurant Management</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5★</div>
+          <div class="stat-desc">International Standards</div>
+        </div>
+      </div>
+
+      <a href="#contact" class="btn-primary">Work With Ellis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CHALLENGES ─── -->
+<section id="challenges">
+  <div class="challenges-layout">
+    <div class="section-header reveal">
+      <span class="label">The Problem</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Common <em>Challenges</em> We Solve</h2>
+      <p class="section-subtitle">
+        Most hospitality businesses in Eswatini have the ambition — but lack the systems and culture of true service excellence.
+      </p>
+    </div>
+
+    <div class="challenges-list">
+      <div class="challenge-item reveal reveal-delay-1">
+        <span class="challenge-num">01</span>
+        <div>
+          <span class="challenge-text">Inconsistent Service Standards</span>
+          <span class="challenge-sub">Guest experience varies by shift, leaving lasting negative impressions.</span>
+        </div>
+      </div>
+      <div class="challenge-item reveal reveal-delay-2">
+        <span class="challenge-num">02</span>
+        <div>
+          <span class="challenge-text">Absence of SOPs</span>
+          <span class="challenge-sub">Without documented procedures, quality cannot be replicated or scaled.</span>
+        </div>
+      </div>
+      <div class="challenge-item reveal reveal-delay-2">
+        <span class="challenge-num">03</span>
+        <div>
+          <span class="challenge-text">Low Staff Confidence & Productivity</span>
+          <span class="challenge-sub">Undertrained teams underperform and struggle with accountability.</span>
+        </div>
+      </div>
+      <div class="challenge-item reveal reveal-delay-3">
+        <span class="challenge-num">04</span>
+        <div>
+          <span class="challenge-text">Missed Upselling Opportunities</span>
+          <span class="challenge-sub">Revenue is left on the table due to lack of effective upsell training.</span>
+        </div>
+      </div>
+      <div class="challenge-item reveal reveal-delay-3">
+        <span class="challenge-num">05</span>
+        <div>
+          <span class="challenge-text">High Employee Turnover</span>
+          <span class="challenge-sub">Poor leadership culture and lack of development drive talent away.</span>
+        </div>
+      </div>
+      <div class="challenge-item reveal reveal-delay-4">
+        <span class="challenge-num">06</span>
+        <div>
+          <span class="challenge-text">Limited Luxury Service Culture</span>
+          <span class="challenge-sub">True hospitality requires mindset shifts that go beyond technical training.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTIONS ─── -->
+<section id="solutions">
+  <div class="section-header reveal">
+    <span class="label">What We Offer</span>
+    <div class="divider"></div>
+    <h2 class="section-title">Transformative <em>Solutions</em></h2>
+    <p class="section-subtitle">
+      Practical, measurable systems that raise the ceiling of what your team can achieve — and your guests can experience.
+    </p>
+  </div>
+
+  <div class="solutions-grid">
+    <div class="solution-card reveal reveal-delay-1">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+          <path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Service Excellence Training</h3>
+      <p class="solution-desc">Comprehensive staff training programmes anchored in five-star service philosophy, communication skills, and genuine hospitality culture.</p>
+    </div>
+
+    <div class="solution-card reveal reveal-delay-2">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Restaurant Audits</h3>
+      <p class="solution-desc">In-depth operational assessments that diagnose service gaps, workflow inefficiencies, and missed revenue opportunities with actionable findings.</p>
+    </div>
+
+    <div class="solution-card reveal reveal-delay-3">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">SOP Development</h3>
+      <p class="solution-desc">Custom standard operating procedures tailored to your establishment — creating consistency, accountability, and a replicable service blueprint.</p>
+    </div>
+
+    <div class="solution-card reveal reveal-delay-1">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Leadership Coaching</h3>
+      <p class="solution-desc">Equipping managers and team leaders with the tools to inspire performance, build accountability, and sustain a culture of excellence.</p>
+    </div>
+
+    <div class="solution-card reveal reveal-delay-2">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Guest Experience Design</h3>
+      <p class="solution-desc">Crafting end-to-end guest journeys — from arrival to departure — that generate loyalty, referrals, and outstanding online reviews.</p>
+    </div>
+
+    <div class="solution-card reveal reveal-delay-3">
+      <div class="solution-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/>
+        </svg>
+      </div>
+      <h3 class="solution-title">Pre-Opening Support</h3>
+      <p class="solution-desc">From concept to launch — comprehensive pre-opening consulting to ensure your new establishment opens at its highest possible standard.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FRAMEWORK ─── -->
+<section id="framework">
+  <div class="framework-container">
+    <div class="section-header reveal" style="text-align:center;">
+      <span class="label" style="text-align:center; display:block;">Our Methodology</span>
+      <div class="divider" style="margin: 1.5rem auto;"></div>
+      <h2 class="section-title">The Luxury <em>Service Framework</em></h2>
+      <p class="section-subtitle" style="margin: 1.2rem auto; text-align:center;">
+        A structured five-stage process that transforms hospitality operations from the inside out — with measurable outcomes at every step.
+      </p>
+    </div>
+
+    <div class="framework-steps">
+      <div class="fw-step reveal reveal-delay-1">
+        <div class="fw-step-circle">1</div>
+        <span class="fw-step-title">Standards</span>
+        <span class="fw-step-desc">Define what excellence looks like for your unique context</span>
+      </div>
+      <div class="fw-connector reveal reveal-delay-1"></div>
+
+      <div class="fw-step reveal reveal-delay-2">
+        <div class="fw-step-circle">2</div>
+        <span class="fw-step-title">Training</span>
+        <span class="fw-step-desc">Equip your team with skills and the right service mindset</span>
+      </div>
+      <div class="fw-connector reveal reveal-delay-2"></div>
+
+      <div class="fw-step reveal reveal-delay-3">
+        <div class="fw-step-circle">3</div>
+        <span class="fw-step-title">Execution</span>
+        <span class="fw-step-desc">Implement systems that ensure consistent delivery</span>
+      </div>
+      <div class="fw-connector reveal reveal-delay-3"></div>
+
+      <div class="fw-step reveal reveal-delay-4">
+        <div class="fw-step-circle">4</div>
+        <span class="fw-step-title">Measurement</span>
+        <span class="fw-step-desc">Track performance with clear, tangible metrics</span>
+      </div>
+      <div class="fw-connector reveal reveal-delay-4"></div>
+
+      <div class="fw-step reveal reveal-delay-5">
+        <div class="fw-step-circle">5</div>
+        <span class="fw-step-title">Continuous Improvement</span>
+        <span class="fw-step-desc">Refine and elevate through ongoing review cycles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESULTS ─── -->
+<section id="results">
+  <div class="section-header reveal">
+    <span class="label">What to Expect</span>
+    <div class="divider"></div>
+    <h2 class="section-title">Expected <em>Results</em></h2>
+    <p class="section-subtitle">Real, measurable transformation — not just training sessions, but lasting institutional change.</p>
+  </div>
+
+  <div class="results-grid">
+    <div class="result-item reveal reveal-delay-1">
+      <div class="result-check">
+        <svg viewBox="0 0 16 16" fill="none" width="10" height="10">
+          <path d="M3 8l3 3 7-6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h4 class="result-title">Elevated Guest Satisfaction</h4>
+      <p class="result-desc">Consistent five-star service experiences that turn first-time visitors into loyal, returning guests who advocate for your brand.</p>
+    </div>
+
+    <div class="result-item reveal reveal-delay-2">
+      <div class="result-check">
+        <svg viewBox="0 0 16 16" fill="none" width="10" height="10">
+          <path d="M3 8l3 3 7-6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h4 class="result-title">Higher Online Ratings</h4>
+      <p class="result-desc">Improved TripAdvisor, Google, and social media reviews reflecting the genuine uplift in service quality your guests will experience.</p>
+    </div>
+
+    <div class="result-item reveal reveal-delay-3">
+      <div class="result-check">
+        <svg viewBox="0 0 16 16" fill="none" width="10" height="10">
+          <path d="M3 8l3 3 7-6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h4 class="result-title">Increased Revenue Per Table</h4>
+      <p class="result-desc">Higher beverage, wine, and upsell conversions driven by trained, confident staff who understand how to enhance — not pressure — the dining experience.</p>
+    </div>
+
+    <div class="result-item reveal reveal-delay-1">
+      <div class="result-check">
+        <svg viewBox="0 0 16 16" fill="none" width="10" height="10">
+          <path d="M3 8l3 3 7-6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h4 class="result-title">Stronger Staff Confidence</h4>
+      <p class="result-desc">A motivated, well-trained team that takes pride in their craft — reducing turnover and building a culture of professional service excellence.</p>
+    </div>
+
+    <div class="result-item reveal reveal-delay-2">
+      <div class="result-check">
+        <svg viewBox="0 0 16 16" fill="none" width="10" height="10">
+          <path d="M3 8l3 3 7-6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h4 class="result-title">Management Accountability</h4>
+      <p class="result-desc">Stronger leadership structures and reporting systems that keep your management team focused, effective, and aligned with your vision.</p>
+    </div>
+
+    <div class="result-item reveal reveal-delay-3">
+      <div class="result-check">
+        <svg viewBox="0 0 16 16" fill="none" width="10" height="10">
+          <path d="M3 8l3 3 7-6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h4 class="result-title">Lasting Guest Retention</h4>
+      <p class="result-desc">Service systems that create emotional connections — the kind that bring guests back again and again, and inspire word-of-mouth growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PACKAGES ─── -->
+<section id="packages">
+  <div class="section-header reveal">
+    <span class="label">Service Packages</span>
+    <div class="divider"></div>
+    <h2 class="section-title">Choose Your <em>Engagement</em></h2>
+    <p class="section-subtitle">Whether you need a targeted intervention or ongoing partnership, there is a programme designed for your stage of growth.</p>
+  </div>
+
+  <div class="packages-grid">
+
+    <div class="package-card reveal reveal-delay-1">
+      <span class="package-tier">Starter</span>
+      <h3 class="package-name">Starter Training Package</h3>
+      <p class="package-subtitle">For businesses ready to raise their service baseline</p>
+      <div class="package-divider"></div>
+      <ul class="package-features">
+        <li><span class="feature-dot"></span>Service standards assessment & gap analysis</li>
+        <li><span class="feature-dot"></span>Customised staff training programme</li>
+        <li><span class="feature-dot"></span>Upselling techniques & customer engagement</li>
+        <li><span class="feature-dot"></span>Post-training performance review</li>
+        <li><span class="feature-dot"></span>Recommendations report</li>
+      </ul>
+      <a href="#contact" class="package-cta">Get Started</a>
+    </div>
+
+    <div class="package-card featured reveal reveal-delay-2">
+      <div class="package-badge">Most Popular</div>
+      <span class="package-tier">Growth</span>
+      <h3 class="package-name">Growth Package</h3>
+      <p class="package-subtitle">Complete transformation — from audit to implementation</p>
+      <div class="package-divider"></div>
+      <ul class="package-features">
+        <li><span class="feature-dot"></span>Full operational & service audit</li>
+        <li><span class="feature-dot"></span>Comprehensive staff training programme</li>
+        <li><span class="feature-dot"></span>Custom SOP development & documentation</li>
+        <li><span class="feature-dot"></span>Leadership & management coaching</li>
+        <li><span class="feature-dot"></span>Implementation support & oversight</li>
+        <li><span class="feature-dot"></span>Guest experience redesign</li>
+        <li><span class="feature-dot"></span>30-day follow-up review</li>
+      </ul>
+      <a href="#contact" class="package-cta">Enquire Now</a>
+    </div>
+
+    <div class="package-card reveal reveal-delay-3">
+      <span class="package-tier">Premium</span>
+      <h3 class="package-name">Monthly Consulting Retainer</h3>
+      <p class="package-subtitle">Ongoing partnership for sustained excellence</p>
+      <div class="package-divider"></div>
+      <ul class="package-features">
+        <li><span class="feature-dot"></span>All Growth Package deliverables included</li>
+        <li><span class="feature-dot"></span>Monthly performance monitoring visits</li>
+        <li><span class="feature-dot"></span>Ongoing staff coaching & development</li>
+        <li><span class="feature-dot"></span>KPI tracking & reporting dashboards</li>
+        <li><span class="feature-dot"></span>Priority access to consultant</li>
+        <li><span class="feature-dot"></span>Quarterly strategy reviews</li>
+        <li><span class="feature-dot"></span>Exclusive rate for continued partnership</li>
+      </ul>
+      <a href="#contact" class="package-cta">Discuss Retainer</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-header">
+        <span class="label">Get In Touch</span>
+        <div class="divider"></div>
+        <h2 class="section-title">Book Your Free <em>Assessment</em></h2>
+        <p class="section-subtitle" style="margin-top:1rem;">
+          Begin with a complimentary initial consultation. We will assess your current operation and outline a clear path to elevated service performance.
+        </p>
+      </div>
+
+      <div class="contact-info" style="margin-top: 3rem;">
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.95a16 16 0 0 0 5.19 5.19l.91-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+268 79270153</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">mnksellis@yahoo.com</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Eswatini — serving the wider region</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Your first name" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Establishment Name</label>
+            <input type="text" id="lname" placeholder="Restaurant / Hotel name" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+268 ..." />
+        </div>
+
+        <div class="form-group">
+          <label for="package">Package of Interest</label>
+          <select id="package">
+            <option value="">Select a package...</option>
+            <option>Starter Training Package</option>
+            <option>Growth Package</option>
+            <option>Premium Monthly Retainer</option>
+            <option>Not sure yet — need guidance</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell Us About Your Establishment</label>
+          <textarea id="message" rows="4" placeholder="Briefly describe your current challenges or goals..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">Send Enquiry</button>
+        <div id="form-success" style="display:none; color: var(--gold); font-size: 0.85rem; margin-top: 0.5rem; letter-spacing: 0.05em;">
+          Thank you — we will be in touch shortly.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">MELLIS<span>&nbsp;CONSULTANCY</span></div>
+  <ul class="footer-nav">
+    <li><a href="#about">About</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Mellis Consultancy · Eswatini · mnksellis@yahoo.com</p>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    const isOpen = navLinks.classList.contains('open');
+    mobileToggle.querySelectorAll('span')[0].style.transform = isOpen ? 'rotate(45deg) translate(4px, 4px)' : '';
+    mobileToggle.querySelectorAll('span')[1].style.opacity = isOpen ? '0' : '1';
+    mobileToggle.querySelectorAll('span')[2].style.transform = isOpen ? 'rotate(-45deg) translate(4px, -4px)' : '';
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      mobileToggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '1'; });
+    });
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const navH = navbar.offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Sent';
+      document.getElementById('form-success').style.display = 'block';
+    }, 1200);
+  }
+</script>
+</body>
+</html>
